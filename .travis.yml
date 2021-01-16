@@ -21,3 +21,15 @@ after_success:
   - docker push sebtalbot/tuto_multi_docker_deploy_server
   - docker push sebtalbot/tuto_multi_docker_deploy_worker
   - docker push sebtalbot/tuto_multi_docker_deploy_nginx 
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'ca-central-1'
+  app: 'tuto_multi_docker_deploy'
+  env: 'TutoMultiDockerDeploy-env'
+  bucket_name: 'elasticbeanstalk-ca-central-1-923445559289'
+  bucket_path: 'tuto_multi_docker_deploy'
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
