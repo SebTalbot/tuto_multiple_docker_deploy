@@ -1,0 +1,43 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "nginx",
+      "image": "sebtalbot/tuto_multi_docker_deploy_nginx",
+      "hostname": "nginx",
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": [
+        "client",
+        "server"
+      ],
+      "essential": true
+    },
+    {
+      "name": "client",
+      "image": "sebtalbot/tuto_multi_docker_deploy_client",
+      "hostname": "client",
+      "memory": 128,
+      "essential": false
+    },
+    {
+      "name": "server",
+      "image": "sebtalbot/tuto_multi_docker_deploy_server",
+      "hostname": "api",
+      "memory": 128,
+      "essential": false
+    },
+    {
+      "name": "worker",
+      "image": "sebtalbot/tuto_multi_docker_deploy_worker",
+      "hostname": "worker",
+      "memory": 128,
+      "essential": false
+    }
+  ]
+}
